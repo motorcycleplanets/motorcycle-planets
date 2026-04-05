@@ -4,6 +4,8 @@
 <a href="/nueva_moto">Registrar Moto</a>
 <a href="/nuevo_servicio">Nuevo Servicio</a>
 
+<hr>
+
 <h2>Clientes</h2>
 <ul>
     {% for c in clientes %}
@@ -11,12 +13,16 @@
     {% endfor %}
 </ul>
 
+<hr>
+
 <h2>Motos</h2>
 <ul>
     {% for m in motos %}
         <li>{{ m.marca }} {{ m.modelo }} - {{ m.placa }}</li>
     {% endfor %}
 </ul>
+
+<hr>
 
 <h2>Servicios</h2>
 <ul>
