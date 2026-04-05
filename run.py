@@ -1,6 +1,4 @@
-from app import app, db
+from app import app
 
-with app.app_context():
-    db.create_all()
-
-# NO pongas app.run()
+if _name_ == "_main_":
+    app.run()
