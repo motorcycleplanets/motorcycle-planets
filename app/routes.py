@@ -86,5 +86,6 @@ def nuevo_servicio():
 @app.route('/init_db')
 def init_db():
     with app.app_context():
+        db.drop_all()
         db.create_all()
-    return "Base de datos creada correctamente"
+    return "Base de datos reiniciada correctamente"
