@@ -1,32 +1,26 @@
-<body style="background:#0f172a; color:white; font-family:sans-serif;">
+<h1>Panel de Control</h1>
 
-<h1>🚀 Panel Profesional</h1>
+<a href="/nuevo_cliente">Nuevo Cliente</a>
+<a href="/nueva_moto">Registrar Moto</a>
+<a href="/nuevo_servicio">Nuevo Servicio</a>
 
-<a href="/nuevo_cliente"><button>+ Cliente</button></a>
-<a href="/nueva_moto"><button>+ Moto</button></a>
-<a href="/nuevo_servicio"><button>+ Servicio</button></a>
-
-<hr>
-
-<h2>👤 Clientes</h2>
+<h2>Clientes</h2>
 <ul>
-{% for c in clientes %}
-    <li>{{ c.nombre }} - {{ c.telefono }}</li>
-{% endfor %}
+    {% for c in clientes %}
+        <li>{{ c.nombre }} - {{ c.telefono }}</li>
+    {% endfor %}
 </ul>
 
-<h2>🏍 Motos</h2>
+<h2>Motos</h2>
 <ul>
-{% for m in motos %}
-    <li>{{ m.marca }} {{ m.modelo }} ({{ m.placa }}) - Cliente: {{ m.cliente.nombre }}</li>
-{% endfor %}
+    {% for m in motos %}
+        <li>{{ m.marca }} {{ m.modelo }} - {{ m.placa }}</li>
+    {% endfor %}
 </ul>
 
-<h2>🔧 Servicios</h2>
+<h2>Servicios</h2>
 <ul>
-{% for s in servicios %}
-    <li>{{ s.tipo }} - ${{ s.precio }} - Moto: {{ s.moto.marca }}</li>
-{% endfor %}
+    {% for s in servicios %}
+        <li>{{ s.descripcion }} - ${{ s.precio }}</li>
+    {% endfor %}
 </ul>
-
-</body>
