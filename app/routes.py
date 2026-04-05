@@ -2,14 +2,28 @@ from flask import render_template, request, redirect
 from app import app, db
 from app.models import Cliente, Moto, Servicio
 
+# -------------------------
+# HOME
+# -------------------------
 @app.route('/')
 def home():
     return render_template('index.html')
 
+# -------------------------
+# DASHBOARD (FIX ERROR 500)
+# -------------------------
 @app.route('/dashboard')
 def dashboard():
     clientes = Cliente.query.all()
-    return render_template('dashboard.html', clientes=clientes)
+    motos = Moto.query.all()
+    servicios = Servicio.query.all()
+
+    return render_template(
+        'dashboard.html',
+        clientes=clientes,
+        motos=motos,
+        servicios=servicios
+    )
 
 # -------------------------
 # CLIENTE
