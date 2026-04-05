@@ -1,15 +1,18 @@
 <h1>Nuevo Servicio</h1>
 
 <form method="POST">
-<input name="tipo" placeholder="Tipo de servicio"><br>
-<input name="descripcion" placeholder="Descripción"><br>
-<input name="precio" placeholder="Precio"><br>
 
-<select name="moto_id">
-{% for m in motos %}
-<option value="{{ m.id }}">{{ m.marca }} {{ m.modelo }}</option>
-{% endfor %}
-</select>
+    <input name="descripcion" placeholder="Descripción" required><br>
+    <input name="precio" placeholder="Precio" required><br>
 
-<button>Guardar</button>
+    <select name="moto_id" required>
+        <option value="">Seleccionar moto</option>
+        {% for m in motos %}
+            <option value="{{ m.id }}">{{ m.marca }} {{ m.modelo }}</option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+    <button type="submit">Guardar</button>
+
 </form>
