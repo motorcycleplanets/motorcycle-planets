@@ -1,0 +1,15 @@
+<h1>Nuevo Servicio</h1>
+
+<form method="POST">
+<input name="tipo" placeholder="Tipo de servicio"><br>
+<input name="descripcion" placeholder="Descripción"><br>
+<input name="precio" placeholder="Precio"><br>
+
+<select name="moto_id">
+{% for m in motos %}
+<option value="{{ m.id }}">{{ m.marca }} {{ m.modelo }}</option>
+{% endfor %}
+</select>
+
+<button>Guardar</button>
+</form>
