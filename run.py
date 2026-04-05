@@ -1,4 +1,7 @@
-from app import app
+from app import app, db
 
-if _ _name_ _ "_ _main_ _":
-     app.run()
+with app.app_context():
+    db.create_all()
+
+if _name_ == '_main_':
+    app.run(debug=True)
