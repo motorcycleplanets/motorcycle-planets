@@ -22,4 +22,9 @@ def nuevo_cliente():
 
         return redirect('/dashboard')
 
-    return render_template('nuevo_cliente.html')
+@app.route("/init_db")
+def init_db():
+    from app import db, app
+    with app.app_context():
+        db.create_all()
+    return "Base de datos creada correctamente"
