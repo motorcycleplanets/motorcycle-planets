@@ -1,3 +1,4 @@
-from app import create_app
+from app import app
 
-app = create_app()
+if _ _name_ _ "_ _main_ _":
+     app.run()
