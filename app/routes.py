@@ -1,25 +1,19 @@
-from app import app, db
 from flask import render_template, request, redirect
+from app import app, db
 from app.models import Cliente, Moto, Servicio
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-
 @app.route('/dashboard')
 def dashboard():
     clientes = Cliente.query.all()
-    motos = Moto.query.all()
-    servicios = Servicio.query.all()
+    return render_template('dashboard.html', clientes=clientes)
 
-    return render_template('dashboard.html',
-                           clientes=clientes,
-                           motos=motos,
-                           servicios=servicios)
-
-
-# -------- CLIENTE --------
+# -------------------------
+# CLIENTE
+# -------------------------
 @app.route('/nuevo_cliente', methods=['GET', 'POST'])
 def nuevo_cliente():
     if request.method == 'POST':
@@ -33,8 +27,9 @@ def nuevo_cliente():
 
     return render_template('nuevo_cliente.html')
 
-
-# -------- MOTO --------
+# -------------------------
+# MOTO
+# -------------------------
 @app.route('/nueva_moto', methods=['GET', 'POST'])
 def nueva_moto():
     clientes = Cliente.query.all()
@@ -52,15 +47,15 @@ def nueva_moto():
 
     return render_template('nueva_moto.html', clientes=clientes)
 
-
-# -------- SERVICIO --------
+# -------------------------
+# SERVICIO
+# -------------------------
 @app.route('/nuevo_servicio', methods=['GET', 'POST'])
 def nuevo_servicio():
     motos = Moto.query.all()
 
     if request.method == 'POST':
         servicio = Servicio(
-            tipo=request.form['tipo'],
             descripcion=request.form['descripcion'],
             precio=request.form['precio'],
             moto_id=request.form['moto_id']
@@ -71,8 +66,9 @@ def nuevo_servicio():
 
     return render_template('nuevo_servicio.html', motos=motos)
 
-
-# -------- INIT DB --------
+# -------------------------
+# INIT DB
+# -------------------------
 @app.route('/init_db')
 def init_db():
     with app.app_context():
